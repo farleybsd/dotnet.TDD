@@ -1,0 +1,54 @@
+MSTest
+
+NUnit
+
+XUnit
+
+Instalacao do framework
+Install-Package xunit
+
+Instalacao para reconhecimento do Visual Studio
+Install-Package xunit.runner.visualstudio
+
+https://xunit.net/
+
+
+AAA - Arrange,Act,Assert
+
+//Arrange preparar organizar as depedencias de atuacao(ACT)
+
+
+//ACT Atuacao  chamada do metodo
+
+
+//Assert validacao
+
+
+
+Nomenclaturas de Testes de Unidade
+
+1)- ObjetoEmTeste_MetodoComportamentoEmTeste_ComportamentoEsperado
+
+Pedido_AdicionarPedidoItem_DeveincrementarUnidadeSeItemJaExistente
+
+Estoque_RetirarItem_DeveEnviarEmailSeAbaixoDe10Unidades
+
+2)- MetodoEmTeste_EstadoEmTeste_ComportamentoEsperado (mais usada)
+
+AdicionarPedidoItem_ItemExistenteCarrinho_DeveIncrementarUnidadesDoItem
+
+RetirarItemEstoque_EstoqueAbaixoDe10Unidades_DeveEnviarEmailDeAviso
+
+
+Mock - O que e um Mock ?
+
+Objetos Mock, objetos simulados ou simplesmente Mock(do ingles Mock Object) são objetos
+que simulam o comportamento de objetos reais de forma controlada.
+
+Framework de mock (MoQ)
+Install-Package Moq
+https://github.com/moq/moq4
+https://documentation.help/Moq/
+
+
+ATENCAO CADA CLASS LYBRATY TER UM PROJETO DE TESTE ESPECIFICO
