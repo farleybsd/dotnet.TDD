@@ -52,3 +52,10 @@ https://documentation.help/Moq/
 
 
 ATENCAO CADA CLASS LYBRATY TER UM PROJETO DE TESTE ESPECIFICO
+
+
+//Bogus Gerando Dados Aleatorios
+https://github.com/bchavez/Bogus
+
+Install-Package Bogus
+instalar no features.Tests
