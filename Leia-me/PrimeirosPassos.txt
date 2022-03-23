@@ -59,3 +59,7 @@ https://github.com/bchavez/Bogus
 
 Install-Package Bogus
 instalar no features.Tests
+
+
+//Gerando as dependencias automaticas do moq
+Install-Package Moq.automock
