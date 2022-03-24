@@ -25,6 +25,7 @@ namespace Features.Tests._07___FluentAssertion
             ITestOutputHelper outputHelper)
         {
             _clienteTestsFixture = clienteTestsFixture;
+            _outputHelper = outputHelper;
         }
 
         [Fact(DisplayName = "Adicionar Cliente com Sucesso")]
