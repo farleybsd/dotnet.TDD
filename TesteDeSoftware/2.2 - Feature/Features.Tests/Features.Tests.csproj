@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Bogus" Version="34.0.1" />
+    <PackageReference Include="Fluentassertions" Version="6.5.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="Moq" Version="4.17.2" />
     <PackageReference Include="Moq.automock" Version="3.3.0" />

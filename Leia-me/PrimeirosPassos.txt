@@ -63,3 +63,9 @@ instalar no features.Tests
 
 //Gerando as dependencias automaticas do moq
 Install-Package Moq.automock
+
+// Fluent Assertions
+https://fluentassertions.com/
+https://github.com/fluentassertions/fluentassertions
+
+Install-Package Fluentassertions
