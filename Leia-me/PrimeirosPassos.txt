@@ -73,3 +73,8 @@ Install-Package Fluentassertions
 // Rodando por linha de comando
 Install-Package xunit.runner.console
 dotnet vstest Features.Tests.dll
+
+//Code Coverage
+
+openCover
+https://github.com/OpenCover/opencover
