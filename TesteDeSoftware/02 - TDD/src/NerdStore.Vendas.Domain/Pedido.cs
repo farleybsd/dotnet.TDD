@@ -32,12 +32,29 @@ namespace NerdStore.Vendas.Domain
             ValorTotal = PedidoItems.Sum(i => i.CalcularValor());
         }
 
+        private bool PedidoExistente(PedidoItem pedidoItem)
+        {
+            return _pedidoItems.Any(p => p.ProdutoId == pedidoItem.ProdutoId);
+        }
+
+        private void ValidarQuantidadeItemPermitida(PedidoItem item)
+        {
+            var quantidadeItems = item.Quantidade;
+
+            if (PedidoExistente(item))
+            {
+                var itemExistente = _pedidoItems.FirstOrDefault(p => p.ProdutoId == item.ProdutoId);
+                quantidadeItems += itemExistente.Quantidade;
+            }
+
+            if(quantidadeItems > Max_Unidades_Item) throw new DomainException($"Màximo de {Max_Unidades_Item} unidades por produto");
+        }
+
         public void AdicionarItem(PedidoItem pedidoItem)
         {
-            if (pedidoItem.Quantidade > Max_Unidades_Item) throw new DomainException($"Màximo de {Max_Unidades_Item} unidades por produto");
-           
+            ValidarQuantidadeItemPermitida(pedidoItem);
 
-            if (_pedidoItems.Any(p => p.ProdutoId == pedidoItem.ProdutoId))
+            if (PedidoExistente(pedidoItem))
             {
                 var itemexistente = _pedidoItems.FirstOrDefault(p => p.ProdutoId == pedidoItem.ProdutoId);
                 itemexistente.AdicionarUnidades(pedidoItem.Quantidade);

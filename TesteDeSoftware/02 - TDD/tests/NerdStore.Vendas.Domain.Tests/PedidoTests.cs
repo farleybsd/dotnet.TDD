@@ -12,7 +12,7 @@ namespace NerdStore.Vendas.Domain.Tests
 
 
         [Fact(DisplayName = "Adicionar Novo Pedido ")]
-        [Trait("Categoria", "Pedido Tests")]
+        [Trait("Categoria", "Vendas - Pedido")]
 
         public void AdicionarItemPedido_NovoPedido_DeveAtualizarValor()
         {
@@ -28,7 +28,7 @@ namespace NerdStore.Vendas.Domain.Tests
         }
 
         [Fact(DisplayName = "Adicionar Item Peido Existente")]
-        [Trait("Categoria", "Pedido Tests")]
+        [Trait("Categoria", "Vendas - Pedido")]
 
         public void AdicionarItemPedido_ItemExistente_DeveIncrementarUnidadesSomarValores()
         {
@@ -50,7 +50,7 @@ namespace NerdStore.Vendas.Domain.Tests
         }
 
         [Fact(DisplayName = "Adicionar Item Peido Acima do permitido")]
-        [Trait("Categoria", "Pedido Tests")]
+        [Trait("Categoria", "Vendas - Pedido")]
         public void Adicionar_Item_PeidoAcimaDoPermitido_DeveRetornarExpection()
         {
             //Arrange 
@@ -62,6 +62,25 @@ namespace NerdStore.Vendas.Domain.Tests
             Assert.Throws<DomainException>(() => pedido.AdicionarItem(pedidoItem));
         }
 
-       
+        [Fact(DisplayName = "Adicionar Item Pedido Existente Acima do permitido")]
+        [Trait("Categoria", "Vendas - Pedido")]
+        public void AdicionarItemPedido_ItemExistenteSomaUnidadeAcimaDoPermitido_DeveRetornarExpection()
+        {
+            //Arrange
+            var pedido = Pedido.PedidoFactory.NovoPedidoRascunho(Guid.NewGuid());
+            var produtoId = Guid.NewGuid();
+            var pedidoItem = new PedidoItem(produtoId, "Produto Teste", 1, 100);
+            var pedidoItem2 = new PedidoItem(produtoId, "Produto Teste", Pedido.Max_Unidades_Item, 100);
+
+            //Act
+            pedido.AdicionarItem(pedidoItem2);
+
+            //Assert
+            Assert.Throws<DomainException>(() => pedido.AdicionarItem(pedidoItem2));
+
+        }
+
+
+
     }
 }
