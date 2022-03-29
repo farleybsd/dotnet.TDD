@@ -12,6 +12,8 @@ namespace NerdStore.Vendas.Domain
 
         public PedidoItem(Guid produtoId, string produtoNome, int quantidade, decimal valorUnitario)
         {
+            if (quantidade < Pedido.Min_Unidades_Item) throw new DomainException($"Minimo de {Pedido.Min_Unidades_Item} unidades por produto");
+
             ProdutoId = produtoId;
             ProdutoNome = produtoNome;
             Quantidade = quantidade;

@@ -9,6 +9,10 @@ namespace NerdStore.Vendas.Domain
 {
     public class Pedido 
     {
+        public static int Max_Unidades_Item => 15;
+        public static int Min_Unidades_Item => 1;
+
+
         protected Pedido()
         {
             _pedidoItems = new List<PedidoItem>();
@@ -23,14 +27,17 @@ namespace NerdStore.Vendas.Domain
 
         public Guid ClienteId { get; private set; }
 
-        public void CalcularValorPedido()
+        private void CalcularValorPedido()
         {
             ValorTotal = PedidoItems.Sum(i => i.CalcularValor());
         }
 
         public void AdicionarItem(PedidoItem pedidoItem)
         {
-            if(_pedidoItems.Any(p => p.ProdutoId == pedidoItem.ProdutoId))
+            if (pedidoItem.Quantidade > Max_Unidades_Item) throw new DomainException($"Màximo de {Max_Unidades_Item} unidades por produto");
+           
+
+            if (_pedidoItems.Any(p => p.ProdutoId == pedidoItem.ProdutoId))
             {
                 var itemexistente = _pedidoItems.FirstOrDefault(p => p.ProdutoId == pedidoItem.ProdutoId);
                 itemexistente.AdicionarUnidades(pedidoItem.Quantidade);
