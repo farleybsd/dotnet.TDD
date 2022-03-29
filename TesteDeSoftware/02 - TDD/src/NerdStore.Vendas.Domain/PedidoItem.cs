@@ -18,6 +18,14 @@ namespace NerdStore.Vendas.Domain
             ValorUnitario = valorUnitario;
         }
 
+        internal void AdicionarUnidades(int unidades)
+        {
+            Quantidade += unidades;
+        }
 
+        internal decimal CalcularValor()
+        {
+            return Quantidade * ValorUnitario;
+        }
     }
 }
