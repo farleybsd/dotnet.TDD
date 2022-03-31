@@ -78,3 +78,7 @@ dotnet vstest Features.Tests.dll
 
 openCover
 https://github.com/OpenCover/opencover
+
+//Validation
+
+install-package fluentvalidation
