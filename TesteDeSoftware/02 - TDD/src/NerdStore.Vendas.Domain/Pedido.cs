@@ -18,15 +18,62 @@ namespace NerdStore.Vendas.Domain
             _pedidoItems = new List<PedidoItem>();
         }
         public decimal ValorTotal { get; private set; }
+        public decimal Desconto { get; private set; }
 
         private readonly List<PedidoItem> _pedidoItems;
 
         public PedidoStatus PedidoStatus { get; private set; }
 
+        public bool VoucherUtilizado { get; set; }
+        public Voucher Voucher { get; private set; }
         public IReadOnlyCollection<PedidoItem> PedidoItems => _pedidoItems;
 
         public Guid ClienteId { get; private set; }
 
+
+        public ValidationResult AplicarVoucher(Voucher voucher)
+        {
+            var result = voucher.ValidarSeAplicavel();
+
+            if (!result.IsValid) return result;
+
+            Voucher = voucher;
+            VoucherUtilizado = true;
+
+            CalcularValorTotalDesconto();
+
+            return result;
+        }
+
+
+        public void CalcularValorTotalDesconto()
+        {
+            if (!VoucherUtilizado) return;
+
+            decimal descponto = 0;
+
+            if(Voucher.TipoDescontoVoucher == TipoDescontoVoucher.Valor)
+            {
+                if (Voucher.ValorDesconto.HasValue)
+                {
+                    descponto = Voucher.ValorDesconto.Value;
+                   
+                }
+            }
+            else
+            {
+                if (Voucher.PercentualDesconto.HasValue)
+                {
+                    descponto = (ValorTotal * Voucher.PercentualDesconto.Value) / 100;
+                    
+                }
+                        
+            }
+
+            ValorTotal -= descponto;
+            Desconto = descponto;
+
+        }
         private void CalcularValorPedido()
         {
             ValorTotal = PedidoItems.Sum(i => i.CalcularValor());
