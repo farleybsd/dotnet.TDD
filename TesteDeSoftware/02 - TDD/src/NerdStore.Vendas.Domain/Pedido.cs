@@ -51,13 +51,14 @@ namespace NerdStore.Vendas.Domain
             if (!VoucherUtilizado) return;
 
             decimal descponto = 0;
+            var valor = ValorTotal;
 
             if(Voucher.TipoDescontoVoucher == TipoDescontoVoucher.Valor)
             {
                 if (Voucher.ValorDesconto.HasValue)
                 {
                     descponto = Voucher.ValorDesconto.Value;
-                   
+                    valor -= descponto;
                 }
             }
             else
@@ -65,18 +66,20 @@ namespace NerdStore.Vendas.Domain
                 if (Voucher.PercentualDesconto.HasValue)
                 {
                     descponto = (ValorTotal * Voucher.PercentualDesconto.Value) / 100;
-                    
+                    valor -= descponto;
                 }
                         
             }
 
-            ValorTotal -= descponto;
+            ValorTotal = valor < 0 ? 0 : valor;
+            if (ValorTotal < 0) ValorTotal = 0;
             Desconto = descponto;
 
         }
         private void CalcularValorPedido()
         {
             ValorTotal = PedidoItems.Sum(i => i.CalcularValor());
+            CalcularValorTotalDesconto();
         }
 
         private bool PedidoExistente(PedidoItem pedidoItem)
