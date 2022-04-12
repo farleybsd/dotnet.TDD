@@ -80,5 +80,11 @@ openCover
 https://github.com/OpenCover/opencover
 
 //Validation
-
+git
 install-package fluentvalidation
+
+Teste de integracao 
+https://docs.microsoft.com/pt-br/aspnet/core/test/integration-tests?view=aspnetcore-6.0
+
+install-package Microsoft.AspNetCore.Mvc.Testing -Version 2.2.0
+install-package Microsoft.AspNetCore.App -Version 2.2.0
