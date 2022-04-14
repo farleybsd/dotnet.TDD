@@ -88,3 +88,7 @@ https://docs.microsoft.com/pt-br/aspnet/core/test/integration-tests?view=aspnetc
 
 install-package Microsoft.AspNetCore.Mvc.Testing -Version 2.2.0
 install-package Microsoft.AspNetCore.App -Version 2.2.0
+
+
+// Estutura Html para realizar query para procurar alguma coisa (DOM)
+install-package AngleSharp
