@@ -92,3 +92,19 @@ install-package Microsoft.AspNetCore.App -Version 2.2.0
 
 // Estutura Html para realizar query para procurar alguma coisa (DOM)
 install-package AngleSharp
+
+BDD - Specflow
+
+Instalacao do framework
+install-package specFlow
+
+
+Instalacao para reconhecimento do visual studio com Xunit
+install-package specFlow.xUnit
+
+
+Instalacao para gerar o buid
+install-package specFlow.Tools.MsBuild.Generation
+
+Instalacao para reconhecimento do visual studio
+Extencao -> gerenciar exetencao -> onlaine -> specFlow -> specFlow for Visual Studio 2019
