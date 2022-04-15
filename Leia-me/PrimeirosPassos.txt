@@ -108,3 +108,16 @@ install-package specFlow.Tools.MsBuild.Generation
 
 Instalacao para reconhecimento do visual studio
 Extencao -> gerenciar exetencao -> onlaine -> specFlow -> specFlow for Visual Studio 2019
+
+specFlow - Pt-br
+
+Solucao -> Botao Direito - Adiconar novo Item -> specFlow ->  Adicionar specflow.json
+
+Criando a solucao
+
+Selecionar Psta-> Botao Direito - Adiconar novo Item -> specFlow -> specFlow Feature File 
+
+
+DADO E  -> Arrange
+Quando -> Act
+Entao E -> Assert
