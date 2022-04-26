@@ -121,3 +121,25 @@ Selecionar Psta-> Botao Direito - Adiconar novo Item -> specFlow -> specFlow Fea
 DADO E  -> Arrange
 Quando -> Act
 Entao E -> Assert
+
+Gerando Teste
+
+Colocar o mouse sobre o cenario -> botao direito -> Generate Step Deifinition 
+
+[When(@"o usuario adicionar uma unidade ao carrinho")]
+public void QuandoOUsuarioAdicionarUmaUnidadeAoCarrinho()
+{
+    ScenarioContext.Current.Pending();
+}
+
+
+// Sellenium
+install-package Selenium.WebDriver
+install-package Selenium.Support
+install-package Microsoft.Extensions.Configuration.Json
+install-package DotnetSeleniumExtras.WaitHelpers
+https://chromedriver.chromium.org/downloads (baixar a versao igual do chrome do seu pc)
+
+
+Obs ConfigurationHelper fazer a injencao de depedencia do Appseting.json
+sempre que criar um arquivo Appseting.json botao direito Copy to Output Directory para Copy Always

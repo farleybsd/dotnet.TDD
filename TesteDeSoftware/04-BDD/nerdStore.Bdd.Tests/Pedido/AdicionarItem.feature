@@ -1,22 +1,22 @@
-﻿Funcionalidade: Pedido - Adicionar Item Ao Carrinho
-	Como um usuàrio
-	Eu desejo colocar um  item ao carrinho
-	Para que eu possa comprà-lo posteriormente
+﻿Funcionalidade: Pedido - Adicionar Item ao Carrinho
+	Como um usuário
+	Eu desejo colocar um item no carrinho
+	Para que eu possa comprá-lo posteriormente
 
-Cenario: Adicionar item com sucesso a um novo pedido
+Cenário: Adicionar item com sucesso a um novo pedido
 Dado Que um produto esteja na vitrine
 E Esteja disponivel no estoque
 E O usuario esteja logado
-Quando o usuario adicionar uma unidade ao carrinho
-Então o usuario sera redirecionado ao resumo da compra
-E O valor total do pedido sera exatamente o valor do item adicionado
+Quando O usuário adicionar uma unidade ao carrinho
+Então O usuário será redirecionado ao resumo da compra
+E O valor total do pedido será exatamente o valor do item adicionado
 
-Cenario: Adicionar items acima do limite
+Cenário: Adicionar items acima do limite
 Dado Que um produto esteja na vitrine
 E Esteja disponivel no estoque
 E O usuario esteja logado
-Quando o usuario adicionar um item acima da quantidade maxima permitida
-Então Recebera uma mensagem de erro mencionado que foi ultrapassada quantidade limite
+Quando O usuário adicionar um item acima da quantidade máxima permitida
+Então Receberá uma mensagem de erro mencionando que foi ultrapassada a quantidade limite
 
 Cenário: Adicionar item já existente no carrinho
 Dado Que um produto esteja na vitrine
@@ -36,4 +36,5 @@ E O mesmo produto já tenha sido adicionado ao carrinho anteriormente
 Quando O usuário adicionar a quantidade máxima permitida ao carrinho
 Então O usuário será redirecionado ao resumo da compra
 E Receberá uma mensagem de erro mencionando que foi ultrapassada a quantidade limite
+
 
